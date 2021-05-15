@@ -39,8 +39,8 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-    const fifteen = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600));
-    console.log(fifteen);
+    let fifteen = inventors.filter((each) => each.year >= 1500 && each.year <= 1599);
+    console.log(fifteen );
     
 
     // Array.prototype.map()
@@ -74,7 +74,7 @@
     const oldest = inventors.sort(function (a, b) {
       const lastInventor = a.passed - a.year;
       const nextInventor = b.passed - b.year;
-      return lastInventor > nextInventor ? -1 : 1;
+      return nextInventor - lastInventor;
     });
     console.table(oldest);
 
@@ -92,14 +92,13 @@
     const alpha = people.sort((lastOne, nextOne) => {
       const [aLast, aFirst] = lastOne.split(', ');
       const [bLast, bFirst] = nextOne.split(', ');
-      return aLast > bLast ? 1 : -1;
+      return aLast - bLast;
     });
     console.log(alpha);
 
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
-    // ㅎ
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'pogostick'];
 
     const transportation = data.reduce(function (obj, item) {
